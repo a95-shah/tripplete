@@ -1,0 +1,137 @@
+
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const CITIES = [
+  "RENNES", "LYON", "PARIS", "BORDEAUX", "MONTROUGE", "TOULOUSE", "MARSEILLES",
+];
+
+const IMAGES = [
+  "/d.png", "/a.png", "/b.png", "/c.png", "/e.png", "/f.png", "/g.png", // add as many as needed
+];
+
+const Description = ({ className = "" }) => {
+  const monImageRef = useRef(null);
+  const sectionRef = useRef(null);
+  const citiesRef = useRef(null);
+
+  useEffect(() => {
+    const animatedImage = monImageRef.current;
+    const section = sectionRef.current;
+
+    if (!animatedImage || !section) return;
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: 4,
+          pin: animatedImage,
+          pinSpacing: false,
+        },
+      });
+
+      // Step 1: Fall from top to center
+      tl.fromTo(
+        animatedImage,
+        { y: 0, x: 20, rotation: 0 },
+        { y: 200, x: 70, rotation: 0, ease: "power2.inOut", duration: 2 }
+      );
+
+      // Step 2: Pause in center
+      tl.to(animatedImage, { duration: 0.5 });
+
+      // Step 3: Fall from center to bottom
+      tl.to(animatedImage, {
+        y: window.innerHeight,
+        rotation: 45,
+        ease: "power2.inOut",
+        duration: 3,
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  // Animate cities + images (right → left loop)
+  useEffect(() => {
+    const cities = citiesRef.current;
+    if (!cities) return;
+
+    gsap.to(cities, {
+      xPercent: -50,
+      repeat: -1,
+      ease: "linear",
+      duration: 30, // adjust speed
+    });
+  }, []);
+
+  return (
+    <section
+      ref={sectionRef}
+      
+      className={`relative min-h-screen text-gray-300 overflow-hidden ${className}`}
+    >
+      {/* Moving Cities + Images on top */}
+      <div className="absolute  left-0 w-full overflow-hidden">
+        <div
+          ref={citiesRef}
+          className="flex gap-16 whitespace-nowrap w-max items-center"
+        >
+          {[...Array(2)].map((_, idx) => (
+            <div key={idx} className="flex gap-16 items-center">
+              {CITIES.map((city, i) => (
+                <div key={i} className="flex items-center gap-6">
+                  <span className="text-[#AEC58F] font-extrabold text-7xl transform scale-y-150">
+                    {city}
+                  </span>
+                  {IMAGES[i % IMAGES.length] && (
+                    <img
+                      src={IMAGES[i % IMAGES.length]}
+                      alt={city}
+                      className="w-24 h-24 object-cover rounded-full"
+                    />
+                  )}
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="h-full w-full py-30 px-6 flex flex-col">
+        <div className="flex-1 flex flex-col md:flex-row items-center md:items-start">
+          <p className="uppercase font-extrabold md:w-2/3 leading-tight text-[32px] md:ml-10">
+            Moments of life to share with family or friends, with quality pizzas
+            according to the seasons, a light and leavened dough. A neighborhood
+            pizzeria but not only; specialties by city, fresh pasta and local
+            drinks. On site, to take away or for delivery... Always close to
+            you! La Pizza e la Vita.
+          </p>
+
+          <div className="relative mt-8 md:mt-0 md:ml-12 w-96 h-96 flex items-center justify-center">
+            <img
+              id="description-image"
+              src="/restu.png"
+              alt="restaurant"
+              className="w-full h-full object-contain"
+            />
+            <img
+              ref={monImageRef}
+              src="/mon.png"
+              alt="logo"
+              className="absolute w-full h-full object-contain cursor-pointer"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Description;
