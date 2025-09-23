@@ -3,11 +3,11 @@ import gsap from "gsap";
 import HomePage from "./HomePage";
 
 const cities = [
-  { name: "Paris", bg: "#f5f5dc", color: "#000000" },
-  { name: "London", bg: "#1e90ff", color: "#ffffff" },
-  { name: "lille", bg: "#ff1493", color: "#ffffff" },
-  { name: "Bordeaux", bg: "#228b22", color: "#ffffff" },
-  { name: "Versailles", bg: "#ff8c00", color: "#000000" },
+  { name: "Paris", bg: "#f5f5dc", color: "#283618" },
+  { name: "London", bg: "#1e90ff", color: "#bc6c25" },
+  { name: "lille", bg: "#ff1493", color: "#023047" },
+  { name: "Bordeaux", bg: "#228b22", color: "#ffb703" },
+  { name: "Versailles", bg: "#ff8c00", color: "#a2d2ff" },
 ];
 
 const LandingPage = () => {
