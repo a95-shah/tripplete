@@ -28,7 +28,6 @@ export default function Footer({ className = "" }) {
     });
   }, []);
 
-  // mon.png animation
 // mon.png animation
 useEffect(() => {
   const section = sectionRef.current;
@@ -42,6 +41,7 @@ useEffect(() => {
         start: "top bottom",   // start when footer enters
         end: "bottom top",     // end when footer leaves
         scrub: 1,
+        // pin: true,  // pin the footer during the animation
       },
     });
 
@@ -80,54 +80,54 @@ useEffect(() => {
 }, []);
 
   return (
-    <footer ref={sectionRef} className={`w-full relative overflow-hidden  ${className}`}>
+    <footer ref={sectionRef} className={`w-full relative overflow-hidden ${className}`}>
       {/* floating mon.png */}
       <img
         ref={monRef}
         src="/mon.png"
         alt="logo"
         className="absolute z-50 pointer-events-none"
-        style={{ width: "400px", height: "400px", objectFit: "contain" }}
+        style={{ width: "250px", height: "250px", objectFit: "contain" }}
       />
 
       {/* top heading */}
-      <div className="py-12 text-center">
-        <h2 className="text-3xl md:text-5xl inline-block transform scale-y-150 font-extrabold tracking-wider text-[#0B3926]">
+      <div className="py-6 text-center">
+        <h2 className="text-3xl md:text-5xl xl:text-8xl inline-block transform scale-y-150 font-extrabold tracking-wider text-[#0B3926]">
           LA VIE D'UN,QUARTIER
           <br />
         </h2>
-        <h2 className="text-3xl md:text-5xl mt-5 transform scale-y-150 font-extrabold tracking-wide text-[#0B3926]">
+        <h2 className="text-3xl md:text-5xl xl:text-8xl mt-5 xl:mt-10 transform scale-y-150 font-extrabold tracking-wide text-[#0B3926]">
           AVEC SUPPLEMENT D'AME.
         </h2>
       </div>
 
       {/* links */}
-      <div className="flex justify-evenly items-center  py-5 gap-25 text-lg md:text-xl font-thin">
-        <a href="#" className="flex items-center gap-2 hover:opacity-70">
-          Recrutement <FaChevronRight size={18} />
-        </a>
-        <a href="#" className="flex items-center gap-2 hover:opacity-70">
-          Fidelite <FaChevronRight size={18} />
-        </a>
-        <a href="#" className="flex items-center gap-2 hover:opacity-70">
-          CGU/CGV <FaChevronRight size={18} />
-        </a>
-        <a href="#" className="flex items-center gap-2 hover:opacity-70">
-          Contact <FaChevronRight size={18} />
-        </a>
-      </div>
+  <div className="grid grid-cols-2 gap-6 place-items-center text-base sm:text-lg md:flex md:justify-evenly md:items-center py-4 md:gap-25 md:text-xl xl:text-4xl font-thin xl:py-10 xl:px-10 xl:gap-90">
+  <a href="#" className="flex items-center gap-2 hover:opacity-70">
+    Recrutement <FaChevronRight className="text-sm sm:text-base md:text-lg xl:text-2xl" />
+  </a>
+  <a href="#" className="flex items-center gap-2 hover:opacity-70">
+    Fidelite <FaChevronRight className="text-sm sm:text-base md:text-lg xl:text-2xl" />
+  </a>
+  <a href="#" className="flex items-center gap-2 hover:opacity-70">
+    CGU/CGV <FaChevronRight className="text-sm sm:text-base md:text-lg xl:text-2xl" />
+  </a>
+  <a href="#" className="flex items-center gap-2 hover:opacity-70">
+    Contact <FaChevronRight className="text-sm sm:text-base md:text-lg xl:text-2xl" />
+  </a>
+</div>
 
       {/* marquee */}
-      <div className="overflow-hidden relative py-10">
+      <div className="overflow-hidden relative">
         <div
           ref={marqueeRef}
-          className="flex gap-16 items-center whitespace-nowrap w-max"
+          className="flex gap-16 items-center whitespace-nowrap w-max xl:py-8"
         >
           {[...Array(2)].map((_, idx) => (
             <div key={idx} className="flex gap-16 items-center">
               {CITIES.map((city, i) => (
                 <React.Fragment key={i}>
-                  <span className="text-[#AEC58F] inline-block transform scale-y-150 text-8xl font-extrabold tracking-tight">
+                  <span className="text-[#AEC58F] inline-block transform scale-y-150 text-7xl xl:text-9xl font-extrabold tracking-tight">
                     {city}
                   </span>
                   {IMAGES[i % IMAGES.length] && (
@@ -146,3 +146,11 @@ useEffect(() => {
     </footer>
   );
 }
+
+
+
+
+
+
+
+

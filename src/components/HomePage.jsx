@@ -164,7 +164,7 @@ export default function HomePage({ className = "" }) {
       </h1>
 
       {/* Logo with Hair */}
-      <div className="relative w-[280px] md:w-[340px] z-10">
+      <div className="relative w-[70vw] sm:w-[50vw] md:w-[35vw] xl:w-[25vw] z-10">
         <img
           src="/logohair.png"
           alt="Logo Hairs"
@@ -175,196 +175,29 @@ export default function HomePage({ className = "" }) {
       </div>
 
       {/* Door */}
-      <div className="absolute right-10 top-1/2 -translate-y-1/2 flex items-center gap-2 perspective-[1000px]">
-        <img ref={doorRef} src="/door.png" alt="Door" className="w-[200px] mt-17" />
+      <div className="absolute right-[5vw] top-1/2 -translate-y-1/2 flex items-center gap-2 perspective-[1000px]">
+        <img ref={doorRef} src="/door.png" alt="Door" className="w-[18vw] min-w-[150px]" />
       </div>
 
       {/* Bottom Left Recrutement */}
-      <div className="absolute bottom-10 left-10 flex items-center gap-2 cursor-pointer">
-        <span className="text-orange-600 text-lg font-medium">Recrutement</span>
-        <span className="text-orange-600 text-xl">&gt;</span>
+      <div className="absolute bottom-[3vw] left-[3vw] flex items-center gap-2 cursor-pointer">
+        <span className="text-orange-600 text-base sm:text-3xl md:text-xl lg:text-2xl xl:text-4xl font-medium">
+          Recrutement
+        </span>
+        <span className="text-orange-600 text-lg sm:text-xl md:text-2xl lg:text-2xl">
+          &gt;
+        </span>
       </div>
 
+
       {/* Social Icons (door falls here) */}
-      <div ref={iconsRef} className="absolute bottom-10 right-10 flex gap-4">
-        <a href="#" className="text-orange-600 text-3xl"><FaInstagram /></a>
-        <a href="#" className="text-orange-600 text-3xl"><FaTiktok /></a>
-        <a href="#" className="text-orange-600 text-3xl"><FaFacebook /></a>
-      </div>
+     <div ref={iconsRef} className="absolute bottom-[3vw] right-[3vw] flex gap-[2vw]">
+  <a href="#" className="text-orange-600 text-[clamp(2.5rem,4vw,5rem)]"><FaInstagram /></a>
+  <a href="#" className="text-orange-600 text-[clamp(2.5rem,4vw,5rem)]"><FaTiktok /></a>
+  <a href="#" className="text-orange-600 text-[clamp(2.5rem,4vw,5rem)]"><FaFacebook /></a>
+</div>
+
     </div>
   );
 }
 
-// import React, { useEffect, useRef } from "react";
-// import { FaInstagram, FaTiktok, FaFacebook } from "react-icons/fa";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// export default function HomePage({className=""}) {
-//   const hairRef = useRef(null);
-//   const doorRef = useRef(null);
-//   const iconsRef = useRef(null);
-
-//   useEffect(() => {
-//     // 🔥 Hair animation
-//     gsap.to("#fireTurbulence", {
-//       attr: { seed: 100 },
-//       duration: 15,
-//       repeat: -1,
-//       ease: "none",
-//     });
-
-//     gsap.to("#fireDisplacement", {
-//       attr: { scale: 30 },
-//       duration: 6,
-//       repeat: -1,
-//       yoyo: true,
-//       ease: "sine.inOut",
-//     });
-
-//     // 🎭 Hover tilt (left side up, right side down)
-//     if (doorRef.current) {
-//       doorRef.current.addEventListener("mouseenter", () => {
-//         gsap.to(doorRef.current, {
-//           rotateZ: -10,
-//           duration: 0.4,
-//           ease: "power2.out",
-//         });
-//       });
-//       doorRef.current.addEventListener("mouseleave", () => {
-//         gsap.to(doorRef.current, {
-//           rotateZ: 0,
-//           duration: 0.4,
-//           ease: "power2.inOut",
-//         });
-//       });
-//     }
-
-//     let scrollTween;
-
-//     if (doorRef.current && iconsRef.current) {
-//       // 🎢 Scroll movement: straight down until icons
-//       scrollTween = gsap.to(doorRef.current, {
-//         y: 300,
-//         ease: "none",
-//         scrollTrigger: {
-//           trigger: doorRef.current,
-//           start: "top center",
-//           endTrigger: iconsRef.current,
-//           end: "top center",
-//           scrub: true,
-//         },
-//       });
-
-//       // 🚪 Fall when touching icons
-//       ScrollTrigger.create({
-//         trigger: iconsRef.current,
-//         start: "top center",
-//         onEnter: () => {
-//           // Stop scroll-based animation
-//           scrollTween?.kill();
-
-//           // Independent fall animation
-//           gsap.to(doorRef.current, {
-//             y: "+=500",
-//             rotateZ: 120,
-//             duration: 1,
-//             ease: "bounce.out",
-//           });
-//         },
-//         onLeaveBack: () => {
-//           // Reset back to top
-//           gsap.to(doorRef.current, {
-//             y: 0,
-//             duration: 1,
-//             ease: "power2.out",
-//             onComplete: () => {
-//               // Spin when fully reset
-//               gsap.to(doorRef.current, {
-//                 rotateZ: "+=360",
-//                 duration: 1,
-//                 ease: "power2.inOut",
-//               });
-//             },
-//           });
-
-//           // Restore scroll-based tween
-//           scrollTween = gsap.to(doorRef.current, {
-//             y: 300,
-//             ease: "none",
-//             scrollTrigger: {
-//               trigger: doorRef.current,
-//               start: "top center",
-//               endTrigger: iconsRef.current,
-//               end: "top center",
-//               scrub: true,
-//             },
-//           });
-//         },
-//       });
-//     }
-//   }, []);
-
-//   return (
-//     <div className="relative w-full h-screen bg-[#FFF8E1] flex flex-col items-center justify-center overflow-hidden">
-//       {/* SVG Filter for Hair */}
-//       <svg className="hidden">
-//         <filter id="fireFilter">
-//           <feTurbulence
-//             id="fireTurbulence"
-//             type="fractalNoise"
-//             baseFrequency="0.005 0.03"
-//             numOctaves="2"
-//             seed="0"
-//             result="turbulence"
-//           />
-//           <feDisplacementMap
-//             id="fireDisplacement"
-//             in2="turbulence"
-//             in="SourceGraphic"
-//             scale="20"
-//             xChannelSelector="R"
-//             yChannelSelector="G"
-//           />
-//         </filter>
-//       </svg>
-
-//       {/* Background Text */}
-//       <h1 className="absolute text-[16vw] font-extrabold text-[#FBE9A9] tracking-wide select-none transform scale-y-[1.6] leading-none">
-//         TRIPLETTA
-//       </h1>
-
-//       {/* Logo with Hair */}
-//       <div className="relative w-[280px] md:w-[340px] z-10">
-//         <img
-//           ref={hairRef}
-//           src="/logohair.png"
-//           alt="Logo Hairs"
-//           className="absolute top-0 left-0 w-full h-full"
-//           style={{ filter: "url(#fireFilter)" }}
-//         />
-//         <img src="/logo.png" alt="Logo" className="relative w-full h-full" />
-//       </div>
-
-//       {/* Door */}
-//       <div className="absolute right-10 top-1/2 -translate-y-1/2 flex items-center gap-2 perspective-[1000px]">
-//         <img ref={doorRef} src="/door.png" alt="Door" className="w-[200px] mt-17" />
-//       </div>
-
-//       {/* Bottom Left Recrutement */}
-//       <div className="absolute bottom-10 left-10 flex items-center gap-2 cursor-pointer">
-//         <span className="text-orange-600 text-lg font-medium">Recrutement</span>
-//         <span className="text-orange-600 text-xl">&gt;</span>
-//       </div>
-
-//       {/* Social Icons (door falls here) */}
-//       <div ref={iconsRef} className="absolute bottom-10 right-10 flex gap-4">
-//         <a href="#" className="text-orange-600 text-3xl"><FaInstagram /></a>
-//         <a href="#" className="text-orange-600 text-3xl"><FaTiktok /></a>
-//         <a href="#" className="text-orange-600 text-3xl"><FaFacebook /></a>
-//       </div>
-//     </div>
-//   );
-// }
