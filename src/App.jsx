@@ -17,11 +17,11 @@ export default function App() {
   const colorIndexRef = useRef(0);
 
   const colorThemes = [
-    { background: "#FF8C42", text: "#E6E6FA" },
-    { background: "#FF6B9D", text: "#FFD700" },
-    { background: "#00D4AA", text: "#FF6B9D" },
-    { background: "#16213E", text: "#00D4AA" },
-    { background: "#0D1421", text: "#FF8C42" },
+    { background: "#283618", text: "#a2d2ff" },
+    { background: "#bc6c25", text: "#ffb703" },
+    { background: "#023047", text: "#283618" },
+    { background: "#ffb703", text: "#00D4AA" },
+    { background: "#a2d2ff", text: "#FF8C42" },
   ];
 
   // ----- Infinite Scroll -----

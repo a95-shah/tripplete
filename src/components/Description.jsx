@@ -17,6 +17,9 @@ const Description = ({ className = "" }) => {
   const monImageRef = useRef(null);
   const sectionRef = useRef(null);
   const citiesRef = useRef(null);
+    const handleDoorClick = () => {
+    alert("Door clicked! Welcome to Tripletta!");
+  };
 
   useEffect(() => {
     const animatedImage = monImageRef.current;
@@ -128,6 +131,7 @@ const Description = ({ className = "" }) => {
               src="/mon.png"
               alt="logo"
               className="absolute w-full h-full object-contain cursor-pointer"
+              onClick={handleDoorClick}
             />
           </div>
         </div>
