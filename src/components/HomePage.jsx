@@ -1,3 +1,4 @@
+
 import React, { useEffect, useRef, useId } from "react";
 import { FaInstagram, FaTiktok, FaFacebook } from "react-icons/fa";
 import gsap from "gsap";
@@ -17,6 +18,11 @@ export default function HomePage({ className = "" }) {
   // SVG filter node refs (avoid query by duplicate ids)
   const turbRef = useRef(null);
   const dispRef = useRef(null);
+
+  // 🚪 Door click handler
+  const handleDoorClick = () => {
+    alert("Door clicked! Welcome to Tripletta!");
+  };
 
   useEffect(() => {
     // 🔥 Hair animation: use element refs, not global #ids
@@ -176,7 +182,13 @@ export default function HomePage({ className = "" }) {
 
       {/* Door */}
       <div className="absolute right-[5vw] top-1/2 -translate-y-1/2 flex items-center gap-2 perspective-[1000px]">
-        <img ref={doorRef} src="/door.png" alt="Door" className="w-[18vw] min-w-[150px]" />
+        <img 
+          ref={doorRef} 
+          src="/door.png" 
+          alt="Door" 
+          className="w-[18vw] min-w-[150px] cursor-pointer" 
+          onClick={handleDoorClick}
+        />
       </div>
 
       {/* Bottom Left Recrutement */}
@@ -189,15 +201,12 @@ export default function HomePage({ className = "" }) {
         </span>
       </div>
 
-
       {/* Social Icons (door falls here) */}
-     <div ref={iconsRef} className="absolute bottom-[3vw] right-[3vw] flex gap-[2vw]">
-  <a href="#" className="text-orange-600 text-[clamp(2.5rem,4vw,5rem)]"><FaInstagram /></a>
-  <a href="#" className="text-orange-600 text-[clamp(2.5rem,4vw,5rem)]"><FaTiktok /></a>
-  <a href="#" className="text-orange-600 text-[clamp(2.5rem,4vw,5rem)]"><FaFacebook /></a>
-</div>
-
+      <div ref={iconsRef} className="absolute bottom-[3vw] right-[3vw] flex gap-[2vw]">
+        <a href="#" className="text-orange-600 text-[clamp(2.5rem,4vw,5rem)]"><FaInstagram /></a>
+        <a href="#" className="text-orange-600 text-[clamp(2.5rem,4vw,5rem)]"><FaTiktok /></a>
+        <a href="#" className="text-orange-600 text-[clamp(2.5rem,4vw,5rem)]"><FaFacebook /></a>
+      </div>
     </div>
   );
 }
-
