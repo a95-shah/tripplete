@@ -60,7 +60,7 @@ const LandingPage = () => {
     <div
       ref={containerRef}
       className="fixed inset-0 flex items-center justify-center 
-            text-7xl sm:text-4xl md:text-[10rem] xl:text-[12rem] 
+            text-7xl sm:text-4xl md:text-[10rem] xl:text-[17rem] 
             transform scale-y-150 font-extrabold z-50"
 
     >

@@ -20,7 +20,7 @@ export default function App() {
   const colorThemes = [
     { background: "#283618", text: "#a2d2ff" },
     { background: "#bc6c25", text: "#ffb703" },
-    { background: "#023047", text: "#283618" },
+    { background: "#023047", text: "#ff8fa3" },
     { background: "#ffb703", text: "#00D4AA" },
     { background: "#a2d2ff", text: "#FF8C42" },
   ];

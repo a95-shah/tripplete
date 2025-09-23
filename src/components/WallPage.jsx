@@ -10,7 +10,7 @@ const PHOTOS = [
   { 
     src: "/w1.png", 
     alt: "top-left", 
-    classes: "top-[1%] left-[6%] w-[clamp(200px,16vw,320px)] h-[clamp(280px,22vw,420px)] xl:top-[2%] xl:left-[-20%]",
+    classes: "top-[1%] left-[6%] w-[clamp(200px,16vw,320px)] h-[clamp(280px,22vw,420px)] xl:top-[2%] xl:left-[-16%]",
     mobileClasses: "top-[3%] left-1/2 transform -translate-x-1/2 w-[200px] h-[260px]"
   },
   { 

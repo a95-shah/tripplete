@@ -24,45 +24,72 @@ const Description = ({ className = "" }) => {
 useEffect(() => {
   const animatedImage = monImageRef.current;
   const section = sectionRef.current;
-
   if (!animatedImage || !section) return;
 
-  // Only run ScrollTrigger animations on screens wider than 768px
-  if (window.innerWidth < 768) {
-    gsap.set(animatedImage, { clearProps: "all" }); // reset any GSAP styles
-    return;
-  }
+  let ctx;
 
-  const ctx = gsap.context(() => {
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "top top",
-        end: "bottom top",
-        scrub: 4,
-        pin: animatedImage,
-        pinSpacing: false,
-      },
+  const initAnimation = () => {
+    // kill previous context if exists
+    if (ctx) ctx.revert();
+
+    if (window.innerWidth < 768) {
+      // On mobile, keep image fixed in center
+      gsap.set(animatedImage, {
+        clearProps: "all",
+        x: 0,
+        y: 0,
+        rotation: 0,
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        xPercent: -50,
+        yPercent: -50,
+      });
+      return;
+    }
+
+    // Desktop/tablet animation
+    ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: 4,
+          pin: animatedImage,
+          pinSpacing: false,
+        },
+      });
+
+      tl.fromTo(
+        animatedImage,
+        { y: 0, x: 20, rotation: 0 },
+        { y: 200, x: 70, rotation: 0, ease: "power2.inOut", duration: 2 }
+      );
+
+      tl.to(animatedImage, { duration: 0.5 });
+
+      tl.to(animatedImage, {
+        y: window.innerHeight,
+        rotation: 45,
+        ease: "power2.inOut",
+        duration: 3,
+      });
     });
+  };
 
-    tl.fromTo(
-      animatedImage,
-      { y: 0, x: 20, rotation: 0 },
-      { y: 200, x: 70, rotation: 0, ease: "power2.inOut", duration: 2 }
-    );
+  // run initially
+  initAnimation();
 
-    tl.to(animatedImage, { duration: 0.5 });
+  // re-run on resize
+  window.addEventListener("resize", initAnimation);
 
-    tl.to(animatedImage, {
-      y: window.innerHeight,
-      rotation: 45,
-      ease: "power2.inOut",
-      duration: 3,
-    });
-  });
-
-  return () => ctx.revert();
+  return () => {
+    if (ctx) ctx.revert();
+    window.removeEventListener("resize", initAnimation);
+  };
 }, []);
+
 
 
   useEffect(() => {
