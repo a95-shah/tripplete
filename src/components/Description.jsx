@@ -21,41 +21,49 @@ const Description = ({ className = "" }) => {
     alert("Door clicked! Welcome to Tripletta!");
   };
 
-  useEffect(() => {
-    const animatedImage = monImageRef.current;
-    const section = sectionRef.current;
+useEffect(() => {
+  const animatedImage = monImageRef.current;
+  const section = sectionRef.current;
 
-    if (!animatedImage || !section) return;
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "bottom top",
-          scrub: 4,
-          pin: animatedImage,
-          pinSpacing: false,
-        },
-      });
+  if (!animatedImage || !section) return;
 
-      tl.fromTo(
-        animatedImage,
-        { y: 0, x: 20, rotation: 0 },
-        { y: 200, x: 70, rotation: 0, ease: "power2.inOut", duration: 2 }
-      );
+  // Only run ScrollTrigger animations on screens wider than 768px
+  if (window.innerWidth < 768) {
+    gsap.set(animatedImage, { clearProps: "all" }); // reset any GSAP styles
+    return;
+  }
 
-      tl.to(animatedImage, { duration: 0.5 });
-
-      tl.to(animatedImage, {
-        y: window.innerHeight,
-        rotation: 45,
-        ease: "power2.inOut",
-        duration: 3,
-      });
+  const ctx = gsap.context(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: "bottom top",
+        scrub: 4,
+        pin: animatedImage,
+        pinSpacing: false,
+      },
     });
 
-    return () => ctx.revert();
-  }, []);
+    tl.fromTo(
+      animatedImage,
+      { y: 0, x: 20, rotation: 0 },
+      { y: 200, x: 70, rotation: 0, ease: "power2.inOut", duration: 2 }
+    );
+
+    tl.to(animatedImage, { duration: 0.5 });
+
+    tl.to(animatedImage, {
+      y: window.innerHeight,
+      rotation: 45,
+      ease: "power2.inOut",
+      duration: 3,
+    });
+  });
+
+  return () => ctx.revert();
+}, []);
+
 
   useEffect(() => {
     const cities = citiesRef.current;
@@ -130,7 +138,7 @@ const Description = ({ className = "" }) => {
               ref={monImageRef}
               src="/mon.png"
               alt="logo"
-              className="absolute w-full h-full object-contain cursor-pointer"
+              className="absolute w-3/4 h-3/4 md:w-full md:h-full object-contain cursor-pointer"
               onClick={handleDoorClick}
             />
           </div>
