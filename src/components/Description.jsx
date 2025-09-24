@@ -153,19 +153,19 @@ useEffect(() => {
 
           {/* Right side images */}
           <div className="relative mt-8 xl:mt-30 md:mt-0 md:ml-12 
-                          w-[clamp(18rem,28vw,34rem)] h-[clamp(18rem,28vw,34rem)] 
+                          w-[clamp(22rem,28vw,34rem)] h-[clamp(22rem,28vw,34rem)] 
                           flex items-center justify-center">
             <img
               id="description-image"
-              src="/restu.png"
+              src="/restu.svg"
               alt="restaurant"
-              className="w-full h-full object-contain"
+              className="svg-icon w-full h-full object-contain"
             />
             <img
               ref={monImageRef}
-              src="/mon.png"
+              src="/mon.svg"
               alt="logo"
-              className="absolute w-3/4 h-3/4 md:w-full md:h-full object-contain cursor-pointer"
+              className="svg-icon absolute w-3/4 h-3/4 md:w-full md:h-full object-contain cursor-pointer"
               onClick={handleDoorClick}
             />
           </div>

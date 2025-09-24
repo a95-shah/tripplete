@@ -105,9 +105,9 @@ export default function Footer({ className = "" }) {
       {/* floating mon.png */}
       <img
         ref={monRef}
-        src="/mon.png"
+        src="/mon.svg"
         alt="logo"
-        className="absolute z-50 pointer-events-none"
+        className=" svg-icon absolute z-50 pointer-events-none"
         style={{ width: "250px", height: "250px", objectFit: "contain" }}
       />
 

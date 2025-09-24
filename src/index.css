@@ -18,6 +18,17 @@
   width: 100%;
 }
 
+.svg-icon {
+  transition: filter 0.6s ease;
+}
+
+/* For inline SVGs only */
+svg {
+  fill: currentColor;
+  transition: fill 0.6s ease;
+}
+
+
 
 
 /* :root {

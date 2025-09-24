@@ -59,9 +59,13 @@ const LandingPage = () => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 flex items-center justify-center 
-            text-7xl sm:text-4xl md:text-[10rem] xl:text-[17rem] 
-            transform scale-y-150 font-extrabold z-50"
+      className="
+              fixed inset-0 flex items-center justify-center 
+              text-3xl sm:text-4xl md:text-7xl lg:text-[10rem] xl:text-[17rem] 
+              transform scale-y-150 font-extrabold z-50
+              leading-tight text-center
+            "
+
 
     >
       <span ref={textRef}></span>
