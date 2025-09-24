@@ -384,9 +384,10 @@ export default function HomePage({ className = "" }) {
     </svg>
 
     {/* Background Text */}
-    <h1 className="absolute text-[16vw] font-extrabold text-[#FBE9A9] tracking-wide select-none transform scale-y-[1.6] leading-none">
-      TRIPLETTA
-    </h1>
+    <h1 className="absolute text-[16vw] font-extrabold text-[#FBE9A9] tracking-wide select-none transform scale-y-[1.6] leading-none opacity-50">
+     TRIPLETTA
+   </h1>
+
 
     {/* Logo with Hair */}
     <div
