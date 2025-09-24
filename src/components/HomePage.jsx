@@ -400,12 +400,12 @@ export default function HomePage({ className = "" }) {
       "
     >
       <img
-        src="/logohair.svg"
+        src="/logohair.png"
         alt="Logo Hairs"
         className="absolute top-0 left-0 w-full h-full"
         style={{ filter: `url(#${filterId})` }}
       />
-      <img src="/logo.svg" alt="Logo" className="relative w-full h-full" />
+      <img src="/logo.png" alt="Logo" className="relative w-full h-full" />
     </div>
 
     {/* Door - hidden on mobile 👇 */}
