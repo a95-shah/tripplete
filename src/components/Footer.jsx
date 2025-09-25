@@ -107,8 +107,9 @@ export default function Footer({ className = "" }) {
         ref={monRef}
         src="/mon.svg"
         alt="logo"
-        className=" svg-icon absolute z-50 pointer-events-none"
+        className=" svg-icon absolute z-50 cursor-pointer"
         style={{ width: "250px", height: "250px", objectFit: "contain" }}
+        onClick={() => alert("door clicked welcome to tripletta")}
       />
 
       {/* top heading */}

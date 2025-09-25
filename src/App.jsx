@@ -220,7 +220,6 @@ export default function App() {
     { background: "#a2d2ff", text: "#FF8C42" },
   ];
 
-  // ----- Infinite Scroll -----
  // ----- Infinite Scroll -----
 useEffect(() => {
   const wrapper = document.querySelector(".scroll-wrapper");

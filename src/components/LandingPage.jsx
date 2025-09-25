@@ -61,7 +61,7 @@ const LandingPage = () => {
       ref={containerRef}
       className="
               fixed inset-0 flex items-center justify-center 
-              text-3xl sm:text-4xl md:text-7xl lg:text-[10rem] xl:text-[17rem] 
+              text-5xl sm:text-6xl md:text-7xl lg:text-[10rem] xl:text-[17rem] 
               transform scale-y-150 font-extrabold z-50
               leading-tight text-center
             "
