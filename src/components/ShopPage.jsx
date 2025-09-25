@@ -42,9 +42,10 @@ const ShopPage = () => {
           <div className="w-full flex justify-center pb-8">
             <button
               id="shop-btn" 
-              className="bg-[#BDD3AD] text-green-950 font-bold w-[160px] h-[55px] uppercase
+              className="bg-[#BDD3AD] font-bold w-[160px] h-[55px] uppercase
                          text-lg shadow-[0_8px_18px_rgba(0,0,0,0.15)]
                          hover:brightness-105 transition"
+             onClick={() => alert("door clicked welcome to tripletta")}
             >
               LA BOUTIQUE
             </button>
@@ -92,6 +93,7 @@ const ShopPage = () => {
                  text-[clamp(14px,1.2vw,20px)] uppercase
                  shadow-[0_8px_18px_rgba(0,0,0,0.15)]
                  hover:brightness-105 transition self-start"
+      onClick={() => alert("door clicked welcome to tripletta")}
     >
       LA BOUTIQUE
     </button>
